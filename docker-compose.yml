@@ -1,0 +1,36 @@
+version: '3'
+services:
+  myapp:
+    build: .
+    entrypoint: dockerize -wait tcp://myapp-mysql:3306 -timeout 40s php-fpm
+    volumes: 
+      - .:/usr/src/app
+    depends_on:
+      - myapp-mysql
+      - myapp-redis
+  
+  myapp-mysql:
+    build: .docker/mysql
+    command: --innodb-use-native-aio=0
+    ports:
+      - 3306
+    volumes:
+      - .docker/dbdata:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: myapp
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: root
+  
+  myapp-redis:
+    image: redis:alpine
+    expose:
+      - 6379
+  
+  myapp-nginx:
+    build: .docker/nginx
+    ports:
+      - "8000:80"
+    volumes:
+      - .:/var/www
+    depends_on:
+      - myapp
