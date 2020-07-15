@@ -6,3 +6,5 @@ Foi removida a pasta `vendor` para replicar o erro sugerido na parte 1.
 
 Registry Image Location: [docker hub](https://hub.docker.com/repository/docker/pirpedro/laravel-commited)
 
+GO Image: [docker hub](https://hub.docker.com/repository/docker/pirpedro/codeeducation)
+
