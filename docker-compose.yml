@@ -24,8 +24,7 @@ services:
   myapp-redis:
     image: redis:alpine
     expose:
-      - 6379
-  
+      - 6379 
   myapp-nginx:
     build: .docker/nginx
     entrypoint: /var/www/.docker/nginx/entrypoint.sh
