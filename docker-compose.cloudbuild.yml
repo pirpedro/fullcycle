@@ -2,6 +2,7 @@ version: '3'
 services:
   myapp:
     build: .
+    container_name: myapp
     #entrypoint: dockerize -wait tcp://myapp-mysql:3306 -timeout 40s php-fpm
     volumes: 
       - .:/usr/src/app
