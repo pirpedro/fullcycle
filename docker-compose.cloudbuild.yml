@@ -29,7 +29,8 @@ services:
   
   myapp-nginx:
     build: .docker/nginx
-    entrypoint: /var/www/.docker/nginx/entrypoint.sh
+    #entrypoint: /var/www/.docker/nginx/entrypoint.sh
+    entrypoint: ls /var/www/
     ports:
       - "8000:80"
     volumes:
